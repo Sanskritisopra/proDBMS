@@ -1,0 +1,143 @@
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit User</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Edit User</h1>
+    
+    <form th:action="@{/users/update}" method="post" th:object="${user}">
+        <input type="hidden" th:field="*{id}" /> 
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" th:field="*{name}" class="form-control" id="name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" th:field="*{email}" class="form-control" id="email" required />
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" th:field="*{password}" class="form-control" id="password" required />
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select th:field="*{gender}" class="form-control" id="gender" required>
+                <option th:each="gender : ${genderList}" th:value="${gender}" th:text="${gender}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="profession">Profession:</label>
+            <select th:field="*{profession}" class="form-control" id="profession" required>
+                <option th:each="profession : ${professionList}" th:value="${profession}" th:text="${profession}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="birthday">Birthday:</label>
+            <input type="date" th:field="*{birthday}" class="form-control" id="birthday" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update User</button>
+        <a href="/users" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Client</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Edit Client</h1>
+    
+    <form th:action="@{/clients/update}" method="post" th:object="${client}">
+        <input type="hidden" th:field="*{clientId}" /> <!-- Hidden field for client ID -->
+        
+        <div class="form-group">
+            <label for="fName">First Name:</label>
+            <input type="text" th:field="*{fName}" class="form-control" id="fName" required />
+        </div>
+
+        <div class="form-group">
+            <label for="mName">Middle Name:</label>
+            <input type="text" th:field="*{mName}" class="form-control" id="mName" />
+        </div>
+
+        <div class="form-group">
+            <label for="lName">Last Name:</label>
+            <input type="text" th:field="*{lName}" class="form-control" id="lName" required />
+        </div>
+
+        <div class="form-group">
+            <label for="occupation">Occupation:</label>
+            <input type="text" th:field="*{occupation}" class="form-control" id="occupation" required />
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input type="date" th:field="*{dateOfBirth}" class="form-control" id="dateOfBirth" required />
+        </div>
+
+        <div class="form-group">
+            <label for="spouse">Spouse:</label>
+            <input type="text" th:field="*{spouse}" class="form-control" id="spouse" />
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" th:field="*{address}" class="form-control" id="address" />
+        </div>
+
+        <div class="form-group">
+            <label for="children">Children:</label>
+            <input type="text" th:field="*{children}" class="form-control" id="children" />
+        </div>
+
+        <h3>Phone Numbers</h3>
+<div class="form-group">
+    <label for="phoneNumber1">Phone Number 1:</label>
+    <input type="text" name="phoneNumber1" class="form-control" id="phoneNumber1"
+           th:value="${clientPhones.size() > 0 ? clientPhones[0].phoneNumber : ''}" required />
+</div>
+
+<div class="form-group">
+    <label for="phoneNumber2">Phone Number 2 (optional):</label>
+    <input type="text" name="phoneNumber2" class="form-control" id="phoneNumber2"
+           th:value="${clientPhones.size() > 1 ? clientPhones[1].phoneNumber : ''}" />
+</div>
+
+
+<h3>Email Addresses</h3>
+<div class="form-group">
+    <label for="email1">Email 1:</label>
+    <input type="email" name="email1" class="form-control" id="email1"
+           th:value="${clientEmails.size() > 0 ? clientEmails[0].email : ''}" required />
+</div>
+
+<div class="form-group">
+    <label for="email2">Email 2 (optional):</label>
+    <input type="email" name="email2" class="form-control" id="email2"
+           th:value="${clientEmails.size() > 1 ? clientEmails[1].email : ''}" />
+</div>
+
+
+        <button type="submit" class="btn btn-primary">Update Client</button>
+        <a href="/clients" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
