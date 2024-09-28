@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Client List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Client List</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Occupation</th>
+                <th>Date of Birth</th>
+                <th>Spouse</th>
+                <th>Address</th>
+                <th>Children</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="client : ${clients}">
+                <td th:text="${client.clientId}">1</td>
+                <td th:text="${client.fName}">John</td>
+                <td th:text="${client.mName}">A.</td>
+                <td th:text="${client.lName}">Doe</td>
+                <td th:text="${client.occupation}">Developer</td>
+                <td th:text="${client.dateOfBirth}">1990-01-01</td>
+                <td th:text="${client.spouse}">Jane</td>
+                <td th:text="${client.address}">123 Main St</td>
+                <td th:text="${client.children}">2</td>
+                <td>
+                    <a th:href="@{/clients/edit/{id}(id=${client.clientId})}" class="btn btn-warning btn-sm">Edit</a>
+                    <form th:action="@{/clients/delete/{id}(id=${client.clientId})}" method="post" style="display:inline;">
+                        <input type="submit" value="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this client?');"/>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/register" class="btn btn-primary">Register New Client</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
