@@ -20,6 +20,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "Client")
 public class Client {
+    public Client(int int1, String string, String string2) {
+    }
+
+    public Client(int int1, String string) {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ClientId;

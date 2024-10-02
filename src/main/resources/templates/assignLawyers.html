@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Lawyers</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Assign Lawyers to Task</h2>
+        
+        <form th:action="@{/task/assign/save}" method="post">
+            <input type="hidden" th:name="taskID" th:value="${taskID}" />
+            <input type="hidden" th:name="corporateCaseID" th:value="${corporateCaseID}" />
+            
+            <div class="form-group">
+                <label>Select Lawyers:</label>
+                <select multiple class="form-control" name="lawyerIDs">
+                    <option th:each="lawyer : ${availableLawyers}" th:value="${lawyer.lawyerID}" th:text="${lawyer.fname}"></option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Assign</button>
+        </form>
+        
+        <a href="/task/all" class="btn btn-secondary">Back to Task List</a>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

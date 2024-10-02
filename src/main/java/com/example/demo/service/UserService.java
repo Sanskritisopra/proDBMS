@@ -10,6 +10,6 @@ public interface UserService {
 	User save (UserDto userDto);
 
     UserDetails loadUserByUsername(String name);
-	
+    boolean emailExists(String email);
 
 }

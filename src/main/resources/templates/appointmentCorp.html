@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Appointment</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Add New Appointment</h2>
+        
+        <form th:action="@{/appointment/save}" method="post">
+            <div class="form-group">
+                <label for="corporateCaseID">Corporate Case ID</label>
+                <select class="form-control" id="corporateCaseID" name="corporateCaseID" required>
+                    <option value="" disabled selected>Select Corporate Case ID</option>
+                    <option th:each="id : ${corporateCaseIDs}" th:value="${id}" th:text="${id}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="lawyerID">Lawyer ID</label>
+                <select class="form-control" id="lawyerID" name="lawyerID" required>
+                    <option value="" disabled selected>Select Lawyer ID</option>
+                    <option th:each="id : ${lawyerIDs}" th:value="${id}" th:text="${id}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="clientID">Client ID</label>
+                <select class="form-control" id="clientID" name="clientID" required>
+                    <option value="" disabled selected>Select Client ID</option>
+                    <option th:each="id : ${clientIDs}" th:value="${id}" th:text="${id}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="appointmentDate">Appointment Date (dd-MM-yyyy)</label>
+                <input type="date" class="form-control" id="appointmentDate" name="appointmentDate" required>
+            </div>
+            <div class="form-group">
+                <label for="appointmentTime">Appointment Time (HH:mm)</label>
+                <input type="time" class="form-control" id="appointmentTime" name="appointmentTime" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" id="location" name="location" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Appointment</button>
+            <a href="/appointment/all" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

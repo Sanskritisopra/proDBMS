@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ import com.example.demo.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 	
+	@Autowired
+    JdbcTemplate jdbcTemplate;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
@@ -28,6 +31,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String name) {
         throw new UnsupportedOperationException("Unimplemented method 'loadUserByUsername'");
+    }
+
+	@Override
+    public boolean emailExists(String email) {
+        return userRepository.findByEmail(email) != null; // Ensure findByEmail method exists in the repository
     }
 
 }

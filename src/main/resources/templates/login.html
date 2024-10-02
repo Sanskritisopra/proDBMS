@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
-     <link rel="stylesheet" th:href="@{../css/styles.css}">
+     <link rel="stylesheet" th:href="@{css/styles.css}">
 </head>
-<body>
-    <div class="container">
+<body style="background:white;">
+    <div class="container" style="padding-right: 45px;margin-top: 128px;    padding-left: 29px;
+">
         <div class="message" th:if="${param.error}">
            Invalid Username or Password
         </div>
@@ -15,7 +16,7 @@
            Logout Successfuly
         </div>
         
-        <h2>Admin and User Login Page</h2>
+        <h2> Login Page</h2>
         <form 
          th:action="@{/login}"
          method="post"

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <title>Add Task</title>
+</head>
+<body>
+    <h2>Add Task</h2>
+    <form action="#" th:action="@{/task/save}" th:object="${taskCorp}" method="post">
+        <label for="corporateCaseID">Corporate Case:</label>
+        <select th:field="*{corporateCase.corporateCaseID}" id="corporateCaseID">
+            <option th:each="case : ${corporateCases}" th:value="${case.corporateCaseID}" th:text="${case.corporateCaseID}"></option>
+        </select>
+        
+        <label for="taskDesc">Task Description:</label>
+        <input type="text" th:field="*{taskDesc}" id="taskDesc"/>
+
+        <label for="status">Status:</label>
+        <input type="text" th:field="*{status}" id="status"/>
+
+        <label for="dueDate">Due Date:</label>
+        <input type="date" th:field="*{dueDate}" id="dueDate"/>
+
+        <button type="submit">Save Task</button>
+    </form>
+</body>
+</html>

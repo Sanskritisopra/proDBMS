@@ -268,7 +268,7 @@
 //     }
 
 // }
-package com.example.demo;
+package com.example.demo.Controller;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -332,7 +332,7 @@ public class MainController {
             saveClientEmail(clientId, email2);
         }
 
-        return "register_success"; // Redirect to success page
+        return "redirect:/clients"; // Redirect to success page
     }
 
     private void saveClient(Client client) {
@@ -381,6 +381,18 @@ public class MainController {
             model.addAttribute("clientPhones", clientPhones);
             model.addAttribute("clientEmails", clientEmails);
 
+       // Safely retrieve phone numbers and emails
+       String phoneNumber1 = clientPhones.size() > 0 ? clientPhones.get(0).getPhoneNumber() : "";
+       String phoneNumber2 = clientPhones.size() > 1 ? clientPhones.get(1).getPhoneNumber() : "";
+       String email1 = clientEmails.size() > 0 && clientEmails.get(0).getId() != null 
+                       ? clientEmails.get(0).getemail() : ""; // Use the getEmail method
+       String email2 = clientEmails.size() > 1 && clientEmails.get(1).getId() != null 
+                       ? clientEmails.get(1).getemail() : ""; // Use the getEmail method
+
+       model.addAttribute("phoneNumber1", phoneNumber1);
+       model.addAttribute("phoneNumber2", phoneNumber2);
+       model.addAttribute("email1", email1);
+       model.addAttribute("email2", email2);
         } catch (EmptyResultDataAccessException e) {
             model.addAttribute("error", "Client not found");
             return "error_page"; // Redirect to an error page or handle accordingly
@@ -484,7 +496,7 @@ public class MainController {
     
         // Delete any remaining email addresses that were not included in the update
         for (String emailToDelete : existingEmailSet) {
-            String deleteQuery = "DELETE FROM ClientEmail WHERE clientId = ? AND email = ?";
+            String deleteQuery = "DELETE FROM ClientEmail WHERE clientId = ? AND emailAddress = ?";
             jdbcTemplate.update(deleteQuery, clientId, emailToDelete);
         }
     }

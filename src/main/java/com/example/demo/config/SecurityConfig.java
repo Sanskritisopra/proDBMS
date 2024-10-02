@@ -33,8 +33,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(c -> c.disable())
         
-        .authorizeHttpRequests(request -> request
-            .requestMatchers("/admin-page").hasAuthority("ROLE_ADMIN")
+        .authorizeHttpRequests(request -> request.requestMatchers("/", "/login", "/registration", "/css/**").permitAll()
+            .requestMatchers("/clients").hasAuthority("ROLE_ADMIN")
             .requestMatchers("/client-page").hasAuthority("ROLE_CLIENT")
             .requestMatchers("/lawyer-page").hasAuthority("ROLE_LAWYER")
             .requestMatchers("/paralegal-page").hasAuthority("ROLE_PARALEGAL")

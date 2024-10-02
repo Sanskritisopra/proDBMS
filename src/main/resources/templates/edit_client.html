@@ -109,28 +109,28 @@
 <div class="form-group">
     <label for="phoneNumber1">Phone Number 1:</label>
     <input type="text" name="phoneNumber1" class="form-control" id="phoneNumber1"
-           th:value="${clientPhones.size() > 0 ? clientPhones[0].phoneNumber : ''}" required />
+           th:value="${phoneNumber1}" required />
 </div>
 
 <div class="form-group">
     <label for="phoneNumber2">Phone Number 2 (optional):</label>
     <input type="text" name="phoneNumber2" class="form-control" id="phoneNumber2"
-           th:value="${clientPhones.size() > 1 ? clientPhones[1].phoneNumber : ''}" />
+           th:value="${phoneNumber2}" />
 </div>
-
 
 <h3>Email Addresses</h3>
 <div class="form-group">
     <label for="email1">Email 1:</label>
     <input type="email" name="email1" class="form-control" id="email1"
-           th:value="${clientEmails.size() > 0 ? clientEmails[0].email : ''}" required />
+           th:value="${email1}" required />
 </div>
 
 <div class="form-group">
     <label for="email2">Email 2 (optional):</label>
     <input type="email" name="email2" class="form-control" id="email2"
-           th:value="${clientEmails.size() > 1 ? clientEmails[1].email : ''}" />
+           th:value="${email2}" />
 </div>
+
 
 
         <button type="submit" class="btn btn-primary">Update Client</button>

@@ -38,7 +38,7 @@ public class ClientEmail {
                 '}';
     }
 
-    public Object getemail() {
-        return id.getemailAddress();
+    public String getemail() {
+        return id != null ? id.getemailAddress() : null;
     }
 }

@@ -38,7 +38,7 @@ public class ClientPhone {
                 '}';
     }
 
-    public Object getPhoneNumber() {
+    public String getPhoneNumber() {
         return null;
     }
 }
